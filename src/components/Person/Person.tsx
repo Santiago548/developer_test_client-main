@@ -5,6 +5,7 @@ interface PersonProps {
 }
 
 function Person({ person }: PersonProps) {
+
   return (
     <div className="characterCardContainer">
       <fieldset className='fieldsetMain'>
@@ -21,7 +22,10 @@ function Person({ person }: PersonProps) {
         <fieldset className="fieldsetInfo"> 
           <b>BIRTH YEAR:</b> {person.birth_year}<br />
           <b>HOMEWORLD:</b> {person.homeworld}<br />
-          <b>FILMS:</b> <ul>{person.films}</ul><br />
+          <b>FILMS:</b> 
+          <div>
+          {person.films} <br />
+          </div>
         </fieldset>
         <fieldset className="fieldsetInfo">
           <b>VEHICLES:</b> <ul>{person.vehicles}</ul><br />

@@ -17,4 +17,8 @@ export interface PersonType {
   starships: string
 }
 
+export interface FilmType {
+
+}
+
 

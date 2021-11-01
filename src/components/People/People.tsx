@@ -7,17 +7,11 @@ import Person from "../Person";
 
 function People() {
   const [people, setPeople] = React.useState<PersonType[]>([]);
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(""); 
 
   React.useEffect(() => {
     fetchJson<{ results: PersonType[] }>("people").then((peopleResponse) =>
       setPeople(peopleResponse.results)
-    );
-  }, []);
-
-  React.useEffect(() => {
-    fetchJson<{ results: PersonType[] }>("people").then((peopleResponse) =>
-      console.log(peopleResponse.results)
     );
   }, []);
 
