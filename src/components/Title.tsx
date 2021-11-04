@@ -1,7 +1,7 @@
 function Title() {
     return (
       <div>
-        <h1 className='title'>STAR WARS Character app</h1>
+        <p className='title'>starwars app</p>
         <hr />
       </div>
     );

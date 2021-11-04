@@ -1,5 +1,5 @@
 import { PersonType } from "../../types";
-import { useState } from "react";
+
 interface PersonProps {
   person: PersonType;
 }
