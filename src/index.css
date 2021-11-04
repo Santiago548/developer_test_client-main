@@ -81,5 +81,9 @@ code {
 
 ul {
   overflow-wrap: break-word;
-  font-size: 10px;
+  font-size: 15px;
+}
+
+li {
+  padding: 2px;
 }

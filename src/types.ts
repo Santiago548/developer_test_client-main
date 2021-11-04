@@ -11,10 +11,10 @@ export interface PersonType {
   birth_year: string
   gender: string
   homeworld: string 
-  films: string
+  films: string[]
   species: string
-  vehicles: string
-  starships: string
+  vehicles: string[]
+  starships: string[]
 }
 
 export interface FilmType {
