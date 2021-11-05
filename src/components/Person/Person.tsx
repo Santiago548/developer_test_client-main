@@ -1,4 +1,5 @@
 import { PersonType } from "../../types";
+import Films from "../Films/Films"
 
 interface PersonProps {
   person: PersonType;
@@ -29,13 +30,14 @@ function Person({ person }: PersonProps) {
           <br />
           <b>HOMEWORLD:</b> {person.homeworld}
           <br />
-          <b>FILMS:</b>
+          <Films />
+          {/* <b>FILMS:</b>
           <ul>
             {person.films.map((film) => (
               <li>{film}</li>
             ))}
           </ul>
-          <br />
+          <br /> */}
         </fieldset>
         <fieldset className="fieldsetInfo">
           <b>VEHICLES:</b>

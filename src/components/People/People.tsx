@@ -9,11 +9,25 @@ function People() {
   const [people, setPeople] = React.useState<PersonType[]>([]);
   const [query, setQuery] = useState(""); 
 
+  // React.useEffect(() => {
+  //   fetchJson<{ results: PersonType[] }>("people")
+  //   .then((peopleResponse) =>
+  //     setPeople(peopleResponse.results)
+  //     );
+  // }, []);
+
+
   React.useEffect(() => {
-    fetchJson<{ results: PersonType[] }>("people").then((peopleResponse) =>
+    fetchJson<{ results: PersonType[] }>("people")
+    .then(function (peopleResponse) {
+      let peopleMovies = peopleResponse.results.forEach(person => person.films)
       setPeople(peopleResponse.results)
-    );
+      console.log(peopleMovies)
+      // return Promise.all()
+    }
+      );
   }, []);
+
 
   return (
     <div>
