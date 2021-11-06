@@ -1,5 +1,5 @@
 export async function fetchFilmsJson<Response = any>(url: string, init?: RequestInit): Promise<Response> {
-    const response = await Promise.all fetch(
+    const response = await fetch(
       `${url}`,
       {
         ...init ?? {},

@@ -42,12 +42,11 @@ function People() {
       fetchJson<{ results: PersonType[] }>("people")
       .then(peopleResponse => peopleResponse.results) 
       .then(peopleResponseJson => peopleResponseJson.forEach(person => 
-         Promise.all(person.films).then(films => {
-          fetchFilmsJson<{ filmsTitle: FilmType[] }>(`${films}`)
-          // console.log(films)
+         Promise.all(person.films).then(films => { films.map( film =>
+          fetchFilmsJson<{ filmsTitle: FilmType[] }>(`${film}/`)
           .then((filmResponse) => 
-          console.log(filmResponse)
-          )
+          console.log(filmResponse, "WE ARE IN THE FILM RESPONSE")
+          ))
         })))
     }, []);
 
