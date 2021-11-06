@@ -2,12 +2,17 @@ import React from "react";
 import { Simulate } from "react-dom/test-utils";
 import { useState } from "react";
 import { fetchJson } from "../../api";
+import { fetchFilmsJson } from "../../api/FilmIndex";
 import { PersonType } from "../../types";
+import {FilmType} from '../../types'
 import Person from "../Person";
+import { promises } from "fs";
+import { fileURLToPath } from "url";
 
 function People() {
   const [people, setPeople] = React.useState<PersonType[]>([]);
-  const [query, setQuery] = useState(""); 
+  const [film, setFilm] = React.useState<PersonType[]>([]);
+  const [query, setQuery] = useState("");
 
   // React.useEffect(() => {
   //   fetchJson<{ results: PersonType[] }>("people")
@@ -17,16 +22,42 @@ function People() {
   // }, []);
 
 
-  React.useEffect(() => {
-    fetchJson<{ results: PersonType[] }>("people")
-    .then(function (peopleResponse) {
-      let peopleMovies = peopleResponse.results.forEach(person => person.films)
-      setPeople(peopleResponse.results)
-      console.log(peopleMovies)
-      // return Promise.all()
-    }
-      );
-  }, []);
+  // React.useEffect(() => {
+  //   fetchJson<{ results: PersonType[] }>("people")
+  //   .then(function (peopleResponse) {
+  //     let peopleMovies = peopleResponse.results.forEach(person => person.films)
+  //     setPeople(peopleResponse.results)
+  //     console.log(peopleMovies)
+  //      return Promise.all(
+  //      )
+  //   }
+  //     );
+  // }, []);
+
+    React.useEffect(() => {
+      fetchJson<{ results: PersonType[] }>("people")
+        .then((peopleResponse) =>
+          setPeople(peopleResponse.results)
+          );
+      fetchJson<{ results: PersonType[] }>("people")
+      .then(peopleResponse => peopleResponse.results) 
+      .then(peopleResponseJson => peopleResponseJson.forEach(person => 
+         Promise.all(person.films).then(films => {
+          fetchFilmsJson<{ filmsTitle: FilmType[] }>(`${films}`)
+          // console.log(films)
+          .then((filmResponse) => 
+          console.log(filmResponse)
+          )
+        })))
+    }, []);
+
+  
+
+
+  
+  // let peopleMovies = peopleResponse.results.map(person => console.log(person.films), "first map")
+
+
 
 
   return (

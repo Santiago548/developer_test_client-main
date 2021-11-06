@@ -1,6 +1,6 @@
 export async function fetchFilmsJson<Response = any>(url: string, init?: RequestInit): Promise<Response> {
-    const response = await fetch(
-      `https://swapi.dev/api/films/${url}`,
+    const response = await Promise.all fetch(
+      `${url}`,
       {
         ...init ?? {},
         headers: {

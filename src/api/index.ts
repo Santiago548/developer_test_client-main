@@ -9,6 +9,7 @@ export async function fetchJson<Response = any>(url: string, init?: RequestInit)
       }
     })
 
+ return response.json()
 
-  return response.json()
 }
+

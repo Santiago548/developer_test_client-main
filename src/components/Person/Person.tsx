@@ -1,3 +1,4 @@
+import { isExpressionStatement } from "typescript";
 import { PersonType } from "../../types";
 import Films from "../Films/Films"
 
@@ -30,7 +31,9 @@ function Person({ person }: PersonProps) {
           <br />
           <b>HOMEWORLD:</b> {person.homeworld}
           <br />
-          <Films />
+          {person.films}
+          {person.filmTitle}
+          {/* <Films /> */}
           {/* <b>FILMS:</b>
           <ul>
             {person.films.map((film) => (

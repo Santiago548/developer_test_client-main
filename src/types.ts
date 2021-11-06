@@ -12,9 +12,11 @@ export interface PersonType {
   gender: string
   homeworld: string 
   films: string[]
+  filmTitle: any[]
   species: string
   vehicles: string[]
   starships: string[]
+  title: string[]
 }
 
 export interface FilmType {
