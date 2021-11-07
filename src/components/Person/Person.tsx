@@ -1,6 +1,6 @@
 import { isExpressionStatement } from "typescript";
 import { PersonType } from "../../types";
-import { FilmType } from "../../types";
+
 
 interface PersonProps {
   person: PersonType;

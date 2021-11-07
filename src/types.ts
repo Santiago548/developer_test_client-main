@@ -20,7 +20,7 @@ export interface PersonType {
 }
 
 export interface FilmType {
-  title: string[]
+  title?: string[]
   films: string[]
 }
 

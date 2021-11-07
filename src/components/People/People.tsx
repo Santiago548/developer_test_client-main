@@ -3,34 +3,20 @@ import { Simulate } from "react-dom/test-utils";
 import { useState } from "react";
 import { fetchJson } from "../../api";
 import { fetchFilmsJson } from "../../api/FilmIndex";
-import { PersonType } from "../../types";
-import { FilmType } from "../../types";
+import { PersonType, FilmType } from "../../types";
+// import { FilmType } from "../../types";
 import Person from "../Person";
-import Film from "../Films/Film";
 import { promises } from "fs";
-import { fileURLToPath } from "url";
 
 function People() {
   const [people, setPeople] = React.useState<PersonType[]>([]);
-  const [films, setFilm] = React.useState<PersonType[]>([]);
+  const [filmTitles, setFilm] = React.useState<FilmType[]>([]);
   const [query, setQuery] = useState("");
 
   // React.useEffect(() => {
   //   fetchJson<{ results: PersonType[] }>("people")
   //   .then((peopleResponse) =>
   //     setPeople(peopleResponse.results)
-  //     );
-  // }, []);
-
-  // React.useEffect(() => {
-  //   fetchJson<{ results: PersonType[] }>("people")
-  //   .then(function (peopleResponse) {
-  //     let peopleMovies = peopleResponse.results.forEach(person => person.films)
-  //     setPeople(peopleResponse.results)
-  //     console.log(peopleMovies)
-  //      return Promise.all(
-  //      )
-  //   }
   //     );
   // }, []);
 
@@ -44,10 +30,10 @@ function People() {
         peopleResponseJson.forEach((person) =>
           Promise.all(person.films).then((filmsUrl) => {
             filmsUrl.map((film) =>
-              fetchFilmsJson(`${film}/`).then(
+              fetchFilmsJson<{ results: FilmType[] }>(`${film}/`).then(
                 (filmResponse) => {
                   let filmsTitle = filmResponse;
-                  setFilm(filmsTitle.title);
+                  setFilm(filmsTitle.results);
                   // console.log(filmResponse)
                   // setFilm(filmResponse)
                 }
@@ -95,16 +81,7 @@ function People() {
                 <b>EYE COLOR:</b> {person.eye_color}
                 <br />
                 <b>MASS:</b> {person.mass}
-                <fieldset className="fieldsetInfo">
-                  <legend className="legend">Films</legend>
-                  <br />
-                    {console.log(films)}
-                  <ul>
-                    {/* {films.map((film) => (
-                      <li>{film}</li>
-                    ))} */}
-                  </ul>
-                </fieldset>
+         
                 <br />
               </fieldset>
               <fieldset className="fieldsetInfo">
@@ -112,13 +89,20 @@ function People() {
                 <br />
                 <b>HOMEWORLD:</b> {person.homeworld}
                 <br />
-                <b>FILMS:</b>
-                <ul>{person.title}</ul>
-                <br />
               </fieldset>
-              <fieldset className="fieldsetInfo">
-                <br />
-              </fieldset>
+              
+                 <fieldset className="fieldsetInfo">
+                 <legend className="legend">Films</legend>
+                 <br />
+                   {console.log(filmTitles.films)}
+                   {/* {filmTitles} */}
+                 <ul>
+                 </ul>
+                   {/* {films.map((film) => (
+                     <li>{film}</li>
+                   ))} */}
+                 
+               </fieldset>
             </fieldset>
             <br />
           </div>
