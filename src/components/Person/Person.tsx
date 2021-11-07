@@ -1,10 +1,12 @@
 import { isExpressionStatement } from "typescript";
 import { PersonType } from "../../types";
-import Films from "../Films/Films"
+import { FilmType } from "../../types";
+import Film from "../Films/Film"
 
 interface PersonProps {
   person: PersonType;
 }
+
 
 function Person({ person }: PersonProps) {
   return (
@@ -31,31 +33,18 @@ function Person({ person }: PersonProps) {
           <br />
           <b>HOMEWORLD:</b> {person.homeworld}
           <br />
-          {person.films}
-          {person.filmTitle}
-          {/* <Films /> */}
-          {/* <b>FILMS:</b>
-          <ul>
-            {person.films.map((film) => (
+
+          <b>FILMS:</b>
+          <Film />
+          {/* <ul>
+            {person.filmTitle.map((film) => (
               <li>{film}</li>
             ))}
           </ul>
           <br /> */}
+
         </fieldset>
         <fieldset className="fieldsetInfo">
-          <b>VEHICLES:</b>
-          <ul>
-            {person.vehicles.map((vehicle) => (
-              <li>{vehicle}</li>
-            ))}
-          </ul>
-          <br />
-          <b>STARSHIPS:</b>
-          <ul>
-            {person.starships.map((starship) => (
-              <li>{starship}</li>
-            ))}
-          </ul>
           <br />
         </fieldset>
       </fieldset>

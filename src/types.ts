@@ -11,8 +11,8 @@ export interface PersonType {
   birth_year: string
   gender: string
   homeworld: string 
-  films: string[]
-  filmTitle: any[]
+  filmsUrl: string[]
+  films:string[]
   species: string
   vehicles: string[]
   starships: string[]
@@ -20,7 +20,7 @@ export interface PersonType {
 }
 
 export interface FilmType {
-  films?: string[]
-  title?: string[]
+  title: string[]
+  films: string[]
 }
 

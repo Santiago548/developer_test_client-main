@@ -1,16 +1,16 @@
-import { FilmType } from "../../types";
+import { FilmType, PersonType } from "../../types";
 
 interface FilmProps {
-  film: FilmType;
+  filmTitle: FilmType;
 }
 
-function Film({ film }: FilmProps) {
+function Film({ filmTitle }:FilmProps) {
   return (
     <div>
       <fieldset className="fieldsetInfo">
         <legend className="legend">Films</legend>
-        {film}
         <br />
+        {filmTitle}
       </fieldset>
     </div>
   );
