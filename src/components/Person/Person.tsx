@@ -1,7 +1,6 @@
 import { isExpressionStatement } from "typescript";
 import { PersonType } from "../../types";
 import { FilmType } from "../../types";
-import Film from "../Films/Film"
 
 interface PersonProps {
   person: PersonType;
@@ -35,7 +34,7 @@ function Person({ person }: PersonProps) {
           <br />
 
           <b>FILMS:</b>
-          <Film />
+         
           {/* <ul>
             {person.filmTitle.map((film) => (
               <li>{film}</li>
